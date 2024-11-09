@@ -51,6 +51,7 @@ function FarmHud:MoveMinimap()
     Minimap:SetAlpha(self.alphaSetting)
     circle:Show()
     SetArrow(0.3)
+    self.isCentered = true
 end
 
 function FarmHud:RestoreMinimap()
@@ -65,6 +66,7 @@ function FarmHud:RestoreMinimap()
     Minimap:SetAlpha(1)
     circle:Hide()
     SetArrow(1)
+    self.isCentered = false
 end
 
 function FarmHud:HideMinimapButtons()
@@ -96,9 +98,7 @@ SLASH_FARMHUD1 = "/farmhud"
 SlashCmdList["FARMHUD"] = function()
     if FarmHud.isCentered then
         FarmHud:RestoreMinimap()
-        FarmHud.isCentered = false
     else
         FarmHud:MoveMinimap()
-        FarmHud.isCentered = true
     end
 end
